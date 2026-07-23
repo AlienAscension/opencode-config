@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
+  "default_agent": "orchestrator",
+  "agent": {
+    "plan": { "disable": true },
+    "build": { "disable": true }
+  },
+  "lsp": false,
+  "formatter": false
+}
