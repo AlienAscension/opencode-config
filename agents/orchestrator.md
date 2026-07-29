@@ -5,7 +5,12 @@ model: opencode-go/glm-5.2
 temperature: 0.3
 permission:
   edit: ask
-  bash: allow
+  bash:
+    "*": allow
+    "rm -rf *": ask
+    "sudo *": ask
+    "git push*": ask
+    "git commit*": ask
   webfetch: allow
   task:
     "*": deny

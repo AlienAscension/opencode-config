@@ -10,7 +10,12 @@ tools:
   webfetch: true
 permission:
   edit: allow
-  bash: allow
+  bash:
+    "*": allow
+    "rm -rf *": ask
+    "sudo *": ask
+    "git push*": ask
+    "git commit*": deny
   webfetch: allow
 ---
 
