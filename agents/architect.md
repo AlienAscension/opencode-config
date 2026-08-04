@@ -4,7 +4,7 @@ mode: subagent
 model: opencode-go/glm-5.2
 temperature: 0.35
 tools:
-  write: false
+  write: true
   edit: false
   bash: true
   webfetch: true
