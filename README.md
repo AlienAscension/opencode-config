@@ -2,28 +2,38 @@
 
 My personal [opencode](https://opencode.ai) configuration.
 
-## What's here
+## Topology
 
-- `opencode.json` — main config: plugins, default agent, disabled agents, LSP/formatter settings.
-- `tui.json` — TUI theme (`catppuccin`).
-- `agents/` — custom agent definitions:
-  - `orchestrator.md` — primary agent that routes work between subagents.
-  - `architect.md` — produces specs/plans, no file edits.
-  - `coder.md` — implements specs with minimal diffs, never commits.
-  - `review.md` — reviews uncommitted changes.
-  - `escalate.md` — frontier-tier problem solver for stuck tasks.
-- `commands/` — custom slash commands:
-  - `/review` — run code review on uncommitted changes.
-  - `/escalate` — hand a stuck problem to the escalate agent.
+One primary engineer (`build`, the overridden built-in) does the work directly
+— reads, plans, edits, tests, commits. It delegates only:
+
+- `@explore` (built-in, flash model) — noisy read-only research
+- `@review` (qwen3.7-max) — fresh-eyes diff review
+- `@general` (built-in) — parallel independent work units, user-gated
+- `@code-reviewer` (superpowers plugin) — skill-driven reviews
+
+`plan` (built-in) is the read-only analysis mode. The `openwebui` provider
+(local Open WebUI models) stays configured for manual model switching via
+`/models`.
+
+## Files
+
+- `opencode.json` — models, centralized permissions, agent overrides, MCP, LSP.
+- `tui.json` — TUI theme (catppuccin).
+- `agents/` — `build.md` (primary), `review.md` (subagent).
+- `commands/` — `/commit`, `/review` (both execute through `build`).
 
 ## Usage
 
 Clone into `~/.config/opencode/` (or your platform's opencode config dir):
 
-```sh
-git clone https://github.com/AlienAscension/opencode-config.git ~/.config/opencode
-```
+    git clone https://github.com/AlienAscension/opencode-config.git ~/.config/opencode
 
 The `superpowers` plugin is pulled automatically from
-[github.com/obra/superpowers](https://github.com/obra/superpowers) via the
-`plugin` field in `opencode.json`.
+github.com/obra/superpowers via the `plugin` field in `opencode.json`.
+
+## Reverting
+
+The old topology (orchestrator/architect/coder/escalate + heretic/canon) was
+backed up before the streamlining; restore individual agent files from
+`/tmp/opencode/backup/opencode-config/` if ever needed, then restart opencode.

@@ -1,16 +1,64 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
-  "default_agent": "orchestrator",
+  "default_agent": "build",
+  "model": "opencode-go/glm-5.2",
+  "small_model": "opencode-go/glm-5.3-flash",
   "agent": {
-    "plan": { "disable": true },
-    "build": { "disable": true }
+    "explore": { "model": "opencode-go/glm-5.3-flash" }
+  },
+  "permission": {
+    "edit": "allow",
+    "webfetch": "allow",
+    "bash": {
+      "*": "allow",
+      "*rm -rf*": "ask",
+      "*rm -fr*": "ask",
+      "*sudo *": "ask",
+      "*git push*": "ask",
+      "*git commit*": "ask",
+      "*git reset --hard*": "ask",
+      "*git clean -f*": "ask"
+    },
+    "task": {
+      "*": "deny",
+      "explore": "allow",
+      "review": "allow",
+      "general": "ask",
+      "code-reviewer": "allow"
+    }
   },
   "mcp": {
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
       "enabled": true
+    }
+  },
+  "provider": {
+    "openwebui": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Open WebUI (taya)",
+      "options": {
+        "baseURL": "https://taya.hq.stgt.etes.de/api",
+        "apiKey": "{env:OPENWEBUI_API_KEY}"
+      },
+      "models": {
+        "qwen3.8-27b-q4": {
+          "name": "qwen3.8-27b-q4",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        },
+        "gemma-4-31b-it": {
+          "name": "Gemma 4 31B IT",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        }
+      }
     }
   },
   "lsp": true,
