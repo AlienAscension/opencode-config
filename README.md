@@ -12,9 +12,7 @@ One primary engineer (`build`, the overridden built-in) does the work directly
 - `@general` (built-in) — parallel independent work units, user-gated
 - `@code-reviewer` (superpowers plugin) — skill-driven reviews
 
-`plan` (built-in) is the read-only analysis mode. The `openwebui` provider
-(local Open WebUI models) stays configured for manual model switching via
-`/models`.
+`plan` (built-in) is the read-only analysis mode.
 
 ## Files
 
@@ -30,7 +28,9 @@ Clone into `~/.config/opencode/` (or your platform's opencode config dir):
     git clone https://github.com/AlienAscension/opencode-config.git ~/.config/opencode
 
 The `superpowers` plugin is pulled automatically from
-github.com/obra/superpowers via the `plugin` field in `opencode.json`.
+github.com/obra/superpowers and `ponytail`
+(github.com/dietrichgebert/ponytail) from npm, via the `plugin` field in
+`opencode.json`.
 
 ## Reverting
 

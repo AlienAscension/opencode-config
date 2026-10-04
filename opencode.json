@@ -1,8 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
+  "plugin": [
+    "superpowers@git+https://github.com/obra/superpowers.git",
+    "@dietrichgebert/ponytail"
+  ],
   "default_agent": "build",
-  "model": "opencode-go/glm-5.2",
+  "model": "opencode-go/deepseek-v4.1-flash",
   "small_model": "opencode-go/glm-5.3-flash",
   "agent": {
     "explore": { "model": "opencode-go/glm-5.3-flash" }
@@ -33,32 +36,6 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
       "enabled": true
-    }
-  },
-  "provider": {
-    "openwebui": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Open WebUI (taya)",
-      "options": {
-        "baseURL": "https://taya.hq.stgt.etes.de/api",
-        "apiKey": "{env:OPENWEBUI_API_KEY}"
-      },
-      "models": {
-        "qwen3.8-27b-q4": {
-          "name": "qwen3.8-27b-q4",
-          "limit": {
-            "context": 262144,
-            "output": 32768
-          }
-        },
-        "gemma-4-31b-it": {
-          "name": "Gemma 4 31B IT",
-          "limit": {
-            "context": 262144,
-            "output": 32768
-          }
-        }
-      }
     }
   },
   "lsp": true,
