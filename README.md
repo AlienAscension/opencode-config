@@ -20,6 +20,8 @@ One primary engineer (`build`, the overridden built-in) does the work directly
 - `tui.json` — TUI theme (catppuccin).
 - `agents/` — `build.md` (primary), `review.md` (subagent).
 - `commands/` — `/commit`, `/review` (both execute through `build`).
+- `skills/` — `graphify/` (vendored `/graphify` skill + `references/`), from
+  github.com/Graphify-Labs/graphify.
 
 ## Usage
 
